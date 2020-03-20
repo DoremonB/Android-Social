@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.SystemClock;
 
 import com.example.postie.registration.RegisterActivity;
+import com.example.postie.registration.UsernameActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class SplashActivity extends AppCompatActivity {
@@ -18,8 +19,8 @@ public class SplashActivity extends AppCompatActivity {
 
         SystemClock.sleep(2000);
         if(FirebaseAuth.getInstance().getCurrentUser()!=null){
-            Intent intent=new Intent(SplashActivity.this, MainActivity.class);
-            startActivity(intent);
+            Intent usernameIntent=new Intent(SplashActivity.this, UsernameActivity.class);
+            startActivity(usernameIntent);
             finish();
             return;
         }

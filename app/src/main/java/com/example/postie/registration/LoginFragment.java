@@ -135,7 +135,7 @@ public class LoginFragment extends Fragment {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    Intent mainIntent=new Intent(getContext(), MainActivity.class);
+                    Intent mainIntent=new Intent(getContext(), UsernameActivity.class);
                     startActivity(mainIntent);
                     getActivity().finish();
                 }

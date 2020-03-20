@@ -237,8 +237,8 @@ public class OTPFragment extends Fragment {
                                             @Override
                                             public void onComplete(@NonNull Task<DocumentReference> task) {
                                                 if(task.isSuccessful()){
-                                                    Intent mainIntent=new Intent(getContext(), MainActivity.class);
-                                                    startActivity(mainIntent);
+                                                    Intent usernameIntent=new Intent(getContext(), UsernameActivity.class);
+                                                    startActivity(usernameIntent);
                                                     getActivity().finish();
                                                 }
                                                 else{
