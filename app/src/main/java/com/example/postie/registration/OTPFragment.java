@@ -233,9 +233,10 @@ public class OTPFragment extends Fragment {
                                         map.put("email",email);
                                         map.put("phone",phone);
 
-                                        firebaseFirestore.collection("users").add(map).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                                        firebaseFirestore.collection("users").document(firebaseAuth.getCurrentUser().getUid()).set(map)
+                                                .addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
-                                            public void onComplete(@NonNull Task<DocumentReference> task) {
+                                            public void onComplete(@NonNull Task<Void> task) {
                                                 if(task.isSuccessful()){
                                                     Intent usernameIntent=new Intent(getContext(), UsernameActivity.class);
                                                     startActivity(usernameIntent);

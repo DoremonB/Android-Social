@@ -19,7 +19,7 @@ public class SplashActivity extends AppCompatActivity {
 
         SystemClock.sleep(2000);
         if(FirebaseAuth.getInstance().getCurrentUser()!=null){
-            Intent usernameIntent=new Intent(SplashActivity.this, UsernameActivity.class);
+            Intent usernameIntent=new Intent(SplashActivity.this, MainActivity.class);
             startActivity(usernameIntent);
             finish();
             return;
