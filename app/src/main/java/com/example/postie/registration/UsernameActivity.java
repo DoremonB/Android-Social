@@ -1,5 +1,8 @@
 package com.example.postie.registration;
-
+//https://github.com/ArthurHub/Android-Image-Cropper
+//https://github.com/bumptech/glide
+//https://github.com/Karumi/Dexter
+//https://github.com/hdodenhof/CircleImageView
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
