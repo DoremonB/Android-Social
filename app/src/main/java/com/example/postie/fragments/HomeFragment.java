@@ -12,7 +12,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.postie.Adapters.FeedsAdapter;
 import com.example.postie.Adapters.StoriesAdapter;
+import com.example.postie.Models.PostModel;
 import com.example.postie.Models.StoryModel;
 import com.example.postie.R;
 
@@ -29,6 +31,7 @@ public class HomeFragment extends Fragment {
     }
     private RecyclerView stories,feeds;
     private StoriesAdapter storiesAdapter;
+    private FeedsAdapter feedsAdapter;
 
 
 
@@ -68,6 +71,21 @@ public class HomeFragment extends Fragment {
 
         storiesAdapter=new StoriesAdapter(list);
         stories.setAdapter(storiesAdapter);
+
+        List<PostModel> feedsList=new ArrayList<>();
+        feedsList.add(new PostModel("","","","","","","",""));
+        feedsList.add(new PostModel("","","","","","","",""));
+        feedsList.add(new PostModel("","","","","","","",""));
+        feedsList.add(new PostModel("","","","","","","",""));
+        feedsList.add(new PostModel("","","","","","","",""));
+        feedsList.add(new PostModel("","","","","","","",""));
+        feedsList.add(new PostModel("","","","","","","",""));
+        feedsList.add(new PostModel("","","","","","","",""));
+        feedsList.add(new PostModel("","","","","","","",""));
+        feedsList.add(new PostModel("","","","","","","",""));
+        feedsAdapter=new FeedsAdapter(feedsList);
+        feeds.setAdapter(feedsAdapter);
+
 
     }
 
