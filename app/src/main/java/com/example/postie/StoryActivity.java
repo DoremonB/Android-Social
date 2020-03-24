@@ -7,6 +7,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -25,6 +27,7 @@ public class StoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_story);
         init();
+        Glide.with(this).load(images.get(progressBarIndex)).placeholder(R.drawable.default_profile_pic).into(imageView);
         setProgressBars();
 
     }
@@ -75,6 +78,7 @@ public class StoryActivity extends AppCompatActivity {
                             if(progressBarIndex<progressContainer.getChildCount()){
                                 progressCount=0;
                                 //Change Image Here
+                                Glide.with(getApplicationContext()).load(images.get(progressBarIndex)).into(imageView);
                             }
                             else{
                                 finish();
