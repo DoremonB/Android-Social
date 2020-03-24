@@ -8,8 +8,13 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class StoryActivity extends AppCompatActivity {
+    private int progressCount=0;
+    private int progressBarIndex=0;
+    private Timer timer;
     private ImageView imageView;
     private LinearLayout progressContainer;
     public static List<String> images;
@@ -22,6 +27,18 @@ public class StoryActivity extends AppCompatActivity {
         init();
         setProgressBars();
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setTimer();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        timer.cancel();
     }
 
     private void init() {
@@ -40,5 +57,40 @@ public class StoryActivity extends AppCompatActivity {
             }
         }
 
+    }
+    private void setTimer(){
+        timer=new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+//                1000ms * 1 = 1s //will be called 1 time in 1 sec
+//                100ms * 10 = 1s //will be called 10 times in 1 sec
+//                50ms * 100 =5s
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if(progressCount == 100){
+                            progressBarIndex++;
+                            if(progressBarIndex<progressContainer.getChildCount()){
+                                progressCount=0;
+                                //Change Image Here
+                            }
+                            else{
+                                finish();
+                            }
+
+
+
+                        }else {
+                            progressCount++;
+                            ((ProgressBar) progressContainer.getChildAt(progressBarIndex))
+                                    .setProgress(progressCount);
+                        }
+                    }
+                });
+
+            }
+        },0,50);
     }
 }
