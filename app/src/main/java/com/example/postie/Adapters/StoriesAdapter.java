@@ -1,5 +1,6 @@
 package com.example.postie.Adapters;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.postie.Models.StoryModel;
 import com.example.postie.R;
+import com.example.postie.StoryActivity;
 
 import java.util.List;
 
@@ -33,7 +35,7 @@ public class StoriesAdapter extends RecyclerView.Adapter<StoriesAdapter.StoryVie
     }
 
     @Override
-    public void onBindViewHolder(@NonNull StoryViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final StoryViewHolder holder, final int position) {
 
         Glide
                 .with(holder.itemView.getContext())
@@ -41,6 +43,16 @@ public class StoriesAdapter extends RecyclerView.Adapter<StoriesAdapter.StoryVie
                 .placeholder(R.drawable.default_profile_pic)
                 .into(holder.thumnail);
         holder.name.setText(list.get(position).getName());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent storyIntent=new Intent(holder.itemView.getContext(), StoryActivity.class);
+                holder.itemView.getContext().startActivity(storyIntent);
+                StoryActivity.images=list.get(position).getImages();
+
+            }
+        });
 
     }
 
@@ -57,6 +69,8 @@ public class StoriesAdapter extends RecyclerView.Adapter<StoriesAdapter.StoryVie
             super(itemView);
             thumnail=itemView.findViewById(R.id.story);
             name=itemView.findViewById(R.id.name);
+
+
         }
     }
 }

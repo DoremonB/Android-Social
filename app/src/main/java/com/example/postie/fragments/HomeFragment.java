@@ -58,6 +58,9 @@ public class HomeFragment extends Fragment {
 
         List<String> images=new ArrayList<>();
         images.add("");
+        images.add("");
+        images.add("");
+        images.add("");
 
         List<StoryModel> list=new ArrayList<>();
         list.add(new StoryModel(images,"John Doe"));
